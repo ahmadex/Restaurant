@@ -1,9 +1,15 @@
-from my_app.views import home
+from my_app.views import ProductView
+from rest_framework import routers
 from django.urls import path
 
 app_name = "my_app"
 
-urlpatterns = [
-    path('home', home, name="home")
-]
+routers = routers.DefaultRouter()
 
+urlpatterns = []
+
+routers.register(
+    r'products', ProductView, basename="products"
+)
+
+urlpatterns += routers.urls
