@@ -11,3 +11,8 @@ from rest_framework.response import Response
 class ProductView(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(args, kwargs)
+        return queryset.filter(name__startswith='A')
