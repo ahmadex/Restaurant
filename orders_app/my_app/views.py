@@ -15,4 +15,4 @@ class ProductView(viewsets.ModelViewSet):
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(args, kwargs)
-        return queryset.filter(name__startswith='A')
+        return queryset.exclude(name=None)
